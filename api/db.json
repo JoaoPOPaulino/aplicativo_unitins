@@ -1,0 +1,378 @@
+{
+  "boletim": [
+    {
+      "id": 1,
+      "userId": 3,
+      "disciplinaId": 1,
+      "nota": 8.5,
+      "frequencia": "90%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "disciplinaId": 2,
+      "nota": 7.0,
+      "frequencia": "85%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "disciplinaId": 3,
+      "nota": 6.5,
+      "frequencia": "80%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "disciplinaId": 68,
+      "nota": 9.0,
+      "frequencia": "95%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 5,
+      "userId": 4,
+      "disciplinaId": 69,
+      "nota": 8.0,
+      "frequencia": "88%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 6,
+      "userId": 5,
+      "disciplinaId": 1,
+      "nota": 7.5,
+      "frequencia": "85%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 7,
+      "userId": 5,
+      "disciplinaId": 70,
+      "nota": 6.0,
+      "frequencia": "75%",
+      "status": "Reprovado"
+    },
+    {
+      "id": 8,
+      "userId": 6,
+      "disciplinaId": 67,
+      "nota": 8.2,
+      "frequencia": "90%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 9,
+      "userId": 6,
+      "disciplinaId": 71,
+      "nota": 5.5,
+      "frequencia": "70%",
+      "status": "Reprovado"
+    },
+    {
+      "id": 10,
+      "userId": 7,
+      "disciplinaId": 4,
+      "nota": 7.8,
+      "frequencia": "87%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 11,
+      "userId": 7,
+      "disciplinaId": 6,
+      "nota": 4.0,
+      "frequencia": "65%",
+      "status": "Reprovado"
+    },
+    {
+      "id": 12,
+      "userId": 8,
+      "disciplinaId": 72,
+      "nota": 9.5,
+      "frequencia": "98%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 13,
+      "userId": 8,
+      "disciplinaId": 73,
+      "nota": 6.8,
+      "frequencia": "82%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 14,
+      "userId": 9,
+      "disciplinaId": 75,
+      "nota": 7.2,
+      "frequencia": "85%",
+      "status": "Aprovado"
+    },
+    {
+      "id": 15,
+      "userId": 9,
+      "disciplinaId": 76,
+      "nota": 5.0,
+      "frequencia": "68%",
+      "status": "Reprovado"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "nome": "Teste User",
+      "email": "teste@unitins.br",
+      "senha": "123456"
+    },
+    {
+      "id": 2,
+      "nome": "Aluno",
+      "email": "aluno@unitins.br",
+      "senha": "teste123"
+    },
+    {
+      "id": 3,
+      "nome": "João Pedro",
+      "email": "a",
+      "senha": "a"
+    },
+    {
+      "id": 4,
+      "nome": "Maria Silva",
+      "email": "maria@unitins.br",
+      "senha": "m123"
+    },
+    {
+      "id": 5,
+      "nome": "Carlos Souza",
+      "email": "carlos@unitins.br",
+      "senha": "c456"
+    },
+    {
+      "id": 6,
+      "nome": "Ana Pereira",
+      "email": "ana@unitins.br",
+      "senha": "a789"
+    },
+    {
+      "id": 7,
+      "nome": "Lucas Oliveira",
+      "email": "lucas@unitins.br",
+      "senha": "l101"
+    },
+    {
+      "id": 8,
+      "nome": "Fernanda Costa",
+      "email": "fernanda@unitins.br",
+      "senha": "f202"
+    },
+    {
+      "id": 9,
+      "nome": "Rafael Mendes",
+      "email": "rafael@unitins.br",
+      "senha": "r303"
+    },
+    {
+      "id": 10,
+      "nome": "Juliana Lima",
+      "email": "juliana@unitins.br",
+      "senha": "j404"
+    }
+  ],
+  "grade_curricular": [
+    {"id": 1, "curso": "Sistemas de Informação", "periodo": 1, "disciplina": "ALGORITMOS E PROGRAMAÇÃO I", "cargaHoraria": 60},
+    {"id": 2, "curso": "Sistemas de Informação", "periodo": 1, "disciplina": "ARQUITETURA E ORGANIZAÇÃO DE COMPUTADORES I", "cargaHoraria": 60},
+    {"id": 3, "curso": "Sistemas de Informação", "periodo": 1, "disciplina": "DESENVOLVIMENTO FRONT-END", "cargaHoraria": 60},
+    {"id": 4, "curso": "Sistemas de Informação", "periodo": 1, "disciplina": "INGLÊS INSTRUMENTAL", "cargaHoraria": 60},
+    {"id": 5, "curso": "Sistemas de Informação", "periodo": 1, "disciplina": "LEITURA E PRÁTICA DE PRODUÇÃO TEXTUAL", "cargaHoraria": 60},
+    {"id": 6, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "PRÉ-CÁLCULO", "cargaHoraria": 60},
+    {"id": 7, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "GESTÃO DE PROCESSOS EMPRESARIAIS", "cargaHoraria": 30},
+    {"id": 8, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "LÓGICA MATEMÁTICA", "cargaHoraria": 30},
+    {"id": 9, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "ARQUITETURA E ORGANIZAÇÃO DE COMPUTADORES II", "cargaHoraria": 60},
+    {"id": 10, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "BANCO DE DADOS I", "cargaHoraria": 60},
+    {"id": 11, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "ALGORITMOS E PROGRAMAÇÃO II", "cargaHoraria": 60},
+    {"id": 12, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "CÁLCULO DIFERENCIAL E INTEGRAL", "cargaHoraria": 60},
+    {"id": 13, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "METODOLOGIA CIENTÍFICA E DA PESQUISA", "cargaHoraria": 30},
+    {"id": 14, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "SOCIEDADE E TECNOLOGIA", "cargaHoraria": 30},
+    {"id": 15, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "ESTRUTURAS DE DADOS", "cargaHoraria": 60},
+    {"id": 16, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "TÓPICOS EM PROGRAMAÇÃO I", "cargaHoraria": 60},
+    {"id": 17, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "BANCO DE DADOS II", "cargaHoraria": 60},
+    {"id": 18, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "EMPREENDEDORISMO E INOVAÇÃO", "cargaHoraria": 60},
+    {"id": 19, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "PROJETO INTEGRADOR I", "cargaHoraria": 60},
+    {"id": 20, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "FUNDAMENTOS DE SISTEMAS DE INFORMAÇÃO", "cargaHoraria": 30},
+    {"id": 21, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "ENGENHARIA DE REQUISITOS", "cargaHoraria": 30},
+    {"id": 22, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "ENGENHARIA DE SOFTWARE I", "cargaHoraria": 60},
+    {"id": 23, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "TÓPICOS EM PROGRAMAÇÃO II", "cargaHoraria": 60},
+    {"id": 24, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "SISTEMAS OPERACIONAIS", "cargaHoraria": 60},
+    {"id": 25, "curso": "Sistemas de Informação", "periodo": 4, "disciplina": "ASPECTOS TEÓRICOS DE COMPUTAÇÃO", "cargaHoraria": 60},
+    {"id": 26, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "PROJETO INTEGRADOR II", "cargaHoraria": 60},
+    {"id": 27, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "GESTÃO ESTRATÉGICA DA INFORMAÇÃO", "cargaHoraria": 30},
+    {"id": 28, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "OTIMIZAÇÃO PARA SISTEMAS", "cargaHoraria": 30},
+    {"id": 29, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "ENGENHARIA DE SOFTWARE II", "cargaHoraria": 60},
+    {"id": 30, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "COMPUTAÇÃO ORIENTADA A SERVIÇOS", "cargaHoraria": 60},
+    {"id": 31, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "REDES DE COMPUTADORES I", "cargaHoraria": 60},
+    {"id": 32, "curso": "Sistemas de Informação", "periodo": 5, "disciplina": "TÓPICOS EM PROGRAMAÇÃO III", "cargaHoraria": 60},
+    {"id": 33, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "ESTÁGIO SUPERVISIONADO", "cargaHoraria": 60},
+    {"id": 34, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "INTERFACE HUMANO-COMPUTADOR", "cargaHoraria": 60},
+    {"id": 35, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "GOVERNANÇA DE TI", "cargaHoraria": 30},
+    {"id": 36, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "ENGENHARIA DE QUALIDADE", "cargaHoraria": 30},
+    {"id": 37, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "ESTATÍSTICA COMPUTACIONAL", "cargaHoraria": 60},
+    {"id": 38, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "INTELIGÊNCIA ARTIFICIAL", "cargaHoraria": 60},
+    {"id": 39, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "REDES DE COMPUTADORES II", "cargaHoraria": 60},
+    {"id": 40, "curso": "Sistemas de Informação", "periodo": 6, "disciplina": "PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS I", "cargaHoraria": 60},
+    {"id": 41, "curso": "Sistemas de Informação", "periodo": 7, "disciplina": "ELABORAÇÃO E GESTÃO DE PROJETOS", "cargaHoraria": 60},
+    {"id": 42, "curso": "Sistemas de Informação", "periodo": 7, "disciplina": "SISTEMAS DISTRIBUÍDOS", "cargaHoraria": 60},
+    {"id": 43, "curso": "Sistemas de Informação", "periodo": 7, "disciplina": "MINERAÇÃO DE DADOS", "cargaHoraria": 60},
+    {"id": 44, "curso": "Sistemas de Informação", "periodo": 7, "disciplina": "PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS II", "cargaHoraria": 60},
+    {"id": 45, "curso": "Sistemas de Informação", "periodo": 7, "disciplina": "TRABALHO DE CONCLUSÃO DE CURSO I", "cargaHoraria": 60},
+    {"id": 46, "curso": "Sistemas de Informação", "periodo": 8, "disciplina": "SEGURANÇA E AUDITORIA DE SISTEMAS", "cargaHoraria": 60},
+    {"id": 47, "curso": "Sistemas de Informação", "periodo": 8, "disciplina": "DIREITO E LEGISLAÇÃO EM INFORMÁTICA", "cargaHoraria": 60},
+    {"id": 48, "curso": "Sistemas de Informação", "periodo": 8, "disciplina": "SIMULAÇÃO DE SISTEMAS DE INFORMAÇÃO", "cargaHoraria": 60},
+    {"id": 49, "curso": "Sistemas de Informação", "periodo": 8, "disciplina": "INFRAESTRUTURA DE REDES COMO SERVIÇOS", "cargaHoraria": 60},
+    {"id": 50, "curso": "Sistemas de Informação", "periodo": 8, "disciplina": "TRABALHO DE CONCLUSÃO DE CURSO II", "cargaHoraria": 60},
+    {"id": 51, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM METODOLOGIA DE PROJETO DE PESQUISA", "cargaHoraria": 60},
+    {"id": 52, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM ACESSIBILIDADE E USABILIDADE", "cargaHoraria": 60},
+    {"id": 53, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "LIBRAS", "cargaHoraria": 60},
+    {"id": 54, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM SISTEMAS DE RECOMENDAÇÃO", "cargaHoraria": 60},
+    {"id": 55, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM SISTEMAS DE INFORMAÇÃO", "cargaHoraria": 60},
+    {"id": 56, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO", "cargaHoraria": 60},
+    {"id": 57, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM ENGENHARIA DE SOFTWARE", "cargaHoraria": 60},
+    {"id": 58, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM PROGRAMAÇÃO", "cargaHoraria": 60},
+    {"id": 59, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM REDES DE COMPUTADORES", "cargaHoraria": 60},
+    {"id": 60, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO GRÁFICA", "cargaHoraria": 60},
+    {"id": 61, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM BANCO DE DADOS", "cargaHoraria": 60},
+    {"id": 62, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM AMBIENTES WEB", "cargaHoraria": 60},
+    {"id": 63, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "TÓPICOS ESPECIAIS EM INTELIGÊNCIA ARTIFICIAL", "cargaHoraria": 60},
+    {"id": 64, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "PSICOLOGIA APLICADA A SISTEMAS DE INFORMAÇÃO", "cargaHoraria": 60},
+    {"id": 65, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "INGLÊS PARA FINS ACADÊMICOS", "cargaHoraria": 60},
+    {"id": 66, "curso": "Sistemas de Informação", "periodo": 0, "disciplina": "POLÍTICAS DE EDUCAÇÃO EM DIREITOS HUMANOS", "cargaHoraria": 60},
+    {"id": 67, "curso": "Ciência da Computação", "periodo": 1, "disciplina": "INTRODUÇÃO À PROGRAMAÇÃO", "cargaHoraria": 60},
+    {"id": 68, "curso": "Ciência da Computação", "periodo": 1, "disciplina": "MATEMÁTICA DISCRETA", "cargaHoraria": 60},
+    {"id": 69, "curso": "Ciência da Computação", "periodo": 1, "disciplina": "FUNDAMENTOS DE SISTEMAS DIGITAIS", "cargaHoraria": 60},
+    {"id": 70, "curso": "Ciência da Computação", "periodo": 1, "disciplina": "LÓGICA PARA COMPUTAÇÃO", "cargaHoraria": 60},
+    {"id": 71, "curso": "Ciência da Computação", "periodo": 2, "disciplina": "ESTRUTURAS DE DADOS I", "cargaHoraria": 60},
+    {"id": 72, "curso": "Ciência da Computação", "periodo": 2, "disciplina": "CÁLCULO I", "cargaHoraria": 60},
+    {"id": 73, "curso": "Ciência da Computação", "periodo": 2, "disciplina": "ARQUITETURA DE COMPUTADORES", "cargaHoraria": 60},
+    {"id": 74, "curso": "Ciência da Computação", "periodo": 2, "disciplina": "ALGORITMOS E COMPLEXIDADE", "cargaHoraria": 60},
+    {"id": 75, "curso": "Ciência da Computação", "periodo": 3, "disciplina": "SISTEMAS OPERACIONAIS I", "cargaHoraria": 60},
+    {"id": 76, "curso": "Ciência da Computação", "periodo": 3, "disciplina": "PROGRAMAÇÃO ORIENTADA A OBJETOS", "cargaHoraria": 60},
+    {"id": 77, "curso": "Ciência da Computação", "periodo": 3, "disciplina": "BANCO DE DADOS I", "cargaHoraria": 60},
+    {"id": 78, "curso": "Ciência da Computação", "periodo": 3, "disciplina": "CÁLCULO II", "cargaHoraria": 60},
+    {"id": 79, "curso": "Ciência da Computação", "periodo": 4, "disciplina": "REDES DE COMPUTADORES", "cargaHoraria": 60},
+    {"id": 80, "curso": "Ciência da Computação", "periodo": 4, "disciplina": "ENGENHARIA DE SOFTWARE", "cargaHoraria": 60},
+    {"id": 81, "curso": "Ciência da Computação", "periodo": 4, "disciplina": "ESTRUTURAS DE DADOS II", "cargaHoraria": 60},
+    {"id": 82, "curso": "Ciência da Computação", "periodo": 4, "disciplina": "PROBABILIDADE E ESTATÍSTICA", "cargaHoraria": 60},
+    {"id": 83, "curso": "Ciência da Computação", "periodo": 5, "disciplina": "INTELIGÊNCIA ARTIFICIAL", "cargaHoraria": 60},
+    {"id": 84, "curso": "Ciência da Computação", "periodo": 5, "disciplina": "COMPILADORES", "cargaHoraria": 60},
+    {"id": 85, "curso": "Ciência da Computação", "periodo": 5, "disciplina": "SEGURANÇA DA INFORMAÇÃO", "cargaHoraria": 60},
+    {"id": 86, "curso": "Ciência da Computação", "periodo": 5, "disciplina": "SISTEMAS DISTRIBUÍDOS", "cargaHoraria": 60},
+    {"id": 87, "curso": "Ciência da Computação", "periodo": 6, "disciplina": "TRABALHO DE CONCLUSÃO DE CURSO I", "cargaHoraria": 60},
+    {"id": 88, "curso": "Ciência da Computação", "periodo": 6, "disciplina": "VISÃO COMPUTACIONAL", "cargaHoraria": 60},
+    {"id": 89, "curso": "Ciência da Computação", "periodo": 6, "disciplina": "CRIPTOGRAFIA", "cargaHoraria": 60},
+    {"id": 90, "curso": "Ciência da Computação", "periodo": 6, "disciplina": "MACHINE LEARNING", "cargaHoraria": 60},
+    {"id": 91, "curso": "Ciência da Computação", "periodo": 7, "disciplina": "PROJETO DE SOFTWARE", "cargaHoraria": 60},
+    {"id": 92, "curso": "Ciência da Computação", "periodo": 7, "disciplina": "REDES AVANÇADAS", "cargaHoraria": 60},
+    {"id": 93, "curso": "Ciência da Computação", "periodo": 7, "disciplina": "OTIMIZAÇÃO", "cargaHoraria": 60},
+    {"id": 94, "curso": "Ciência da Computação", "periodo": 7, "disciplina": "TRABALHO DE CONCLUSÃO DE CURSO II", "cargaHoraria": 60},
+    {"id": 95, "curso": "Sistemas de Informação", "periodo": 2, "disciplina": "REDES DE COMPUTADORES BÁSICO", "cargaHoraria": 60},
+    {"id": 96, "curso": "Sistemas de Informação", "periodo": 3, "disciplina": "DESIGN DE INTERFACE", "cargaHoraria": 60},
+    {"id": 97, "curso": "Ciência da Computação", "periodo": 4, "disciplina": "SISTEMAS EMBARCADOS", "cargaHoraria": 60},
+    {"id": 98, "curso": "Ciência da Computação", "periodo": 5, "disciplina": "TEORIA DA COMPUTAÇÃO", "cargaHoraria": 60}
+  ],
+  "situacao": [
+    {
+      "id": 1,
+      "userId": 1,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": ["Cópia do RG", "Comprovante de residência"],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Frequência insuficiente em História",
+      "ultimaAtualizacao": "2025-06-01"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "matriculaStatus": "Inativa",
+      "documentosPendentes": [],
+      "pendenciasFinanceiras": "Mensalidade de Março/2025 pendente",
+      "pendenciasAcademicas": "Nenhuma",
+      "ultimaAtualizacao": "2025-05-15"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": ["Histórico escolar"],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Nenhuma",
+      "ultimaAtualizacao": "2025-06-05"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": [],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Trabalho pendente em Matemática Discreta",
+      "ultimaAtualizacao": "2025-06-04"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": ["Comprovante de residência"],
+      "pendenciasFinanceiras": "Mensalidade de Abril/2025 pendente",
+      "pendenciasAcademicas": "Nenhuma",
+      "ultimaAtualizacao": "2025-06-03"
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": [],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Frequência insuficiente em Lógica",
+      "ultimaAtualizacao": "2025-06-02"
+    },
+    {
+      "id": 7,
+      "userId": 7,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": ["Certificado de conclusão"],
+      "pendenciasFinanceiras": "Mensalidade de Maio/2025 pendente",
+      "pendenciasAcademicas": "Trabalho pendente em Inglês Instrumental",
+      "ultimaAtualizacao": "2025-06-06"
+    },
+    {
+      "id": 8,
+      "userId": 8,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": [],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Nenhuma",
+      "ultimaAtualizacao": "2025-06-07"
+    },
+    {
+      "id": 9,
+      "userId": 9,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": ["Histórico escolar"],
+      "pendenciasFinanceiras": "Nenhuma",
+      "pendenciasAcademicas": "Frequência insuficiente em Programação",
+      "ultimaAtualizacao": "2025-06-05"
+    },
+    {
+      "id": 10,
+      "userId": 10,
+      "matriculaStatus": "Ativa",
+      "documentosPendentes": [],
+      "pendenciasFinanceiras": "Mensalidade de Junho/2025 pendente",
+      "pendenciasAcademicas": "Trabalho pendente em Cálculo",
+      "ultimaAtualizacao": "2025-06-08"
+    }
+  ]
+}

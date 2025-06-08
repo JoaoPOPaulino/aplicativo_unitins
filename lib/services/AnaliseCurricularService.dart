@@ -4,7 +4,7 @@ import 'dart:developer' as developer;
 import '../models/Disciplina.dart';
 
 class AnaliseCurricularService {
-  final String baseUrl = 'http://192.168.1.100:3000'; // Substitua pelo IP da sua máquina
+  final String baseUrl = 'http:localhost:3000';
 
   Future<(List<Disciplina>, List<Disciplina>)> fetchAnalise(int userId) async {
     try {
