@@ -29,14 +29,14 @@ flutter pub get
 Configure o JSON Server:
 
 Certifique-se de ter o Node.js instalado.
-Instale o JSON Server globalmente:npm install -g json-server
+Instale o JSON Server globalmente: npm install -g json-server
 
 
 Coloque o arquivo db.json (fornecido no repositório) na raiz do projeto.
-Inicie o servidor JSON:json-server --watch db.json --host 0.0.0.0
+Inicie o servidor JSON: json-server --watch db.json
 
 
-Ajuste o baseUrl nos serviços (ex.: AnaliseCurricularService, SituacaoService) para o IP da máquina onde o servidor está rodando (ex.: http://192.168.1.100:3000).
+Sempre verifique a baseUrl nos serviços (padrão localhost:3000).
 
 
 Execute o aplicativo:
