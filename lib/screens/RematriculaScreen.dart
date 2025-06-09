@@ -21,13 +21,19 @@ class RematriculaScreen extends StatefulWidget {
 class _RematriculaScreenState extends State<RematriculaScreen> {
   final GradeCurricularService _gradeService = GradeCurricularService();
   late Future<List<Disciplina>> _gradeFuture;
-  late int _proximoPeriodo = 2;
   List<Disciplina> _disciplinasSelecionadas = [];
 
   @override
   void initState() {
     super.initState();
-    _gradeFuture = _gradeService.fetchGradeCurricular('Sistemas de Informação');
+    final provider = Provider.of<RematriculaProvider>(context, listen: false);
+    provider.setUserId(widget.userId);
+    _gradeFuture = _loadGrade(provider);
+  }
+
+  Future<List<Disciplina>> _loadGrade(RematriculaProvider provider) async {
+    final curso = provider.curso ?? 'Sistemas de Informação';
+    return _gradeService.fetchGradeCurricular(curso);
   }
 
   void _toggleDisciplina(Disciplina disciplina) {
@@ -44,7 +50,6 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
     if (_disciplinasSelecionadas.isNotEmpty) {
       final provider = Provider.of<RematriculaProvider>(context, listen: false);
       provider.setDisciplinas(_disciplinasSelecionadas);
-      provider.setUserId(widget.userId);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Rematrícula salva com sucesso!')),
       );
@@ -63,8 +68,10 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final situacaoProvider = Provider.of<RematriculaProvider>(context);
-    if (situacaoProvider.isMatriculado(_proximoPeriodo)) {
+    final provider = Provider.of<RematriculaProvider>(context);
+    final proximoPeriodo = (provider.periodoAtual ?? 1) + 1;
+
+    if (provider.isMatriculado(proximoPeriodo)) {
       return ComprovanteMatriculaScreen(userId: widget.userId);
     }
 
@@ -84,20 +91,20 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
           }
 
           final disciplinas = snapshot.data!
-              .where((d) => d.periodo == _proximoPeriodo)
+              .where((d) => d.periodo == proximoPeriodo)
               .toList();
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                const Text(
-                  'Selecione as disciplinas para o 2º Semestre de 2025:',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Text(
+                  'Selecione as disciplinas para o ${proximoPeriodo}º Semestre de 2025:',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
                 DisciplinasRematriculaList(
-                  titulo: 'Selecione as disciplinas para o 2º Semestre de 2025:',
+                  titulo: 'Selecione as disciplinas para o ${proximoPeriodo}º Semestre de 2025:',
                   disciplinas: disciplinas,
                   selecionadas: _disciplinasSelecionadas,
                   onToggleDisciplina: _toggleDisciplina,

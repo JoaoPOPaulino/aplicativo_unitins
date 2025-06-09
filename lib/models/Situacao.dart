@@ -6,6 +6,7 @@ class Situacao {
   final String pendenciasFinanceiras;
   final String pendenciasAcademicas;
   final String ultimaAtualizacao;
+  final int? periodoAtual;
 
   Situacao({
     required this.id,
@@ -15,6 +16,7 @@ class Situacao {
     required this.pendenciasFinanceiras,
     required this.pendenciasAcademicas,
     required this.ultimaAtualizacao,
+    this.periodoAtual,
   });
 
   factory Situacao.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class Situacao {
       pendenciasFinanceiras: json['pendenciasFinanceiras']?.toString() ?? '',
       pendenciasAcademicas: json['pendenciasAcademicas']?.toString() ?? '',
       ultimaAtualizacao: json['ultimaAtualizacao']?.toString() ?? '',
+      periodoAtual: json['periodoAtual'] != null ? int.parse(json['periodoAtual'].toString()) : null,
     );
   }
 }

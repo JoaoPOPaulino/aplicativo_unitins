@@ -5,7 +5,7 @@ import '../models/Boletim.dart';
 
 
 class BoletimService {
-  final String baseUrl = 'http://localhost:3000/boletim';
+  final String baseUrl = 'http://localhost:3000';
 
   Future<List<Boletim>> fetchBoletim(int userId) async {
     try {

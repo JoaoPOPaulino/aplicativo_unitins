@@ -4,6 +4,7 @@ class Disciplina {
   final int periodo;
   final String disciplina;
   final int cargaHoraria;
+  final List<int>? preRequisitos;
 
   Disciplina({
     required this.id,
@@ -11,6 +12,7 @@ class Disciplina {
     required this.periodo,
     required this.disciplina,
     required this.cargaHoraria,
+    this.preRequisitos,
   });
 
   factory Disciplina.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Disciplina {
       periodo: int.parse(json['periodo'].toString()),
       disciplina: json['disciplina']?.toString() ?? '',
       cargaHoraria: int.parse(json['cargaHoraria'].toString()),
+      preRequisitos: (json['preRequisitos'] as List<dynamic>?)?.cast<int>(),
     );
   }
 }

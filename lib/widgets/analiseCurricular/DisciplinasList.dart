@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../models/Disciplina.dart';
 import 'DisciplinaItem.dart';
-
 
 class DisciplinasList extends StatelessWidget {
   final String titulo;
@@ -24,8 +22,10 @@ class DisciplinasList extends StatelessWidget {
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        Expanded(
+        SizedBox(
+          height: 200,
           child: ListView.builder(
+            shrinkWrap: true,
             itemCount: disciplinas.length,
             itemBuilder: (context, index) {
               return DisciplinaItem(disciplina: disciplinas[index]);

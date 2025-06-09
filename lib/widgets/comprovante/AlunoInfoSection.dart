@@ -24,8 +24,8 @@ class AlunoInfoSection extends StatelessWidget {
         const SizedBox(height: 8),
         Text('Nome: ${rematriculaProvider.getUserName(userId) ?? "Usuário"}'),
         Text('Matrícula: 2021TI0100${userId}387'),
-        Text('Curso: Sistemas de Informação'),
-        Text('Semestre: 2º Semestre de 2025'),
+        Text('Curso: ${rematriculaProvider.curso ?? "Sistemas de Informação"}'),
+        Text('Semestre: ${rematriculaProvider.periodoAtual != null ? "${rematriculaProvider.periodoAtual}º Semestre de 2025" : "Não disponível"}'),
         const Divider(),
       ],
     );

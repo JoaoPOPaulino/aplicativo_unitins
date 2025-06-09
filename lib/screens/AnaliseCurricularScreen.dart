@@ -19,7 +19,11 @@ class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
   void initState() {
     super.initState();
     final provider = Provider.of<AnaliseCurricularProvider>(context, listen: false);
-    provider.fetchAnalise(widget.userId);
+    provider.fetchAnalise(widget.userId).catchError((e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao carregar dados: $e')),
+      );
+    });
   }
 
   @override
@@ -28,14 +32,22 @@ class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
     final progresso = provider.progresso;
     final disciplinasConcluidas = provider.disciplinasConcluidas;
     final disciplinasPendentes = provider.disciplinasPendentes;
+    final periodoAtual = provider.periodoAtual;
 
     return Scaffold(
       appBar: const AnaliseAppBar(),
-      body: Padding(
+      body: provider.progresso == 0.0 && disciplinasConcluidas.isEmpty && disciplinasPendentes.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              'Período Atual: ${periodoAtual != null ? "$periodoAtualº período" : "Não disponível"}',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
             ProgressoCard(progresso: progresso),
             const SizedBox(height: 16),
             DisciplinasList(
