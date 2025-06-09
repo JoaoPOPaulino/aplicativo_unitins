@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../models/Boletim.dart';
-import '../provider/BoletimProvider.dart';
-import '../widgets/boletim/BoletimAppBar.dart';
-import '../widgets/boletim/BoletimEmptyState.dart';
-import '../widgets/boletim/BoletimErrorState.dart';
-import '../widgets/boletim/BoletimLoadingState.dart';
-import '../widgets/boletim/BoletimSummaryCard.dart';
-import '../widgets/boletim/DisciplinaCard.dart';
-
+import '../../models/Boletim.dart';
+import '../../provider/BoletimProvider.dart';
+import 'BoletimAppBar.dart';
+import 'BoletimEmptyState.dart';
+import 'BoletimErrorState.dart';
+import 'BoletimLoadingState.dart';
+import 'BoletimSummaryCard.dart';
+import 'DisciplinaCard.dart';
 
 class BoletimScreen extends StatelessWidget {
   const BoletimScreen({super.key});

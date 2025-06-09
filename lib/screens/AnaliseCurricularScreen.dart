@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/Disciplina.dart';
 import '../provider/AnaliseCurricularProvider.dart';
+import '../widgets/analiseCurricular/AnaliseAppBar.dart';
+import '../widgets/analiseCurricular/DisciplinasList.dart';
+import '../widgets/analiseCurricular/ProgressoCard.dart';
 
 class AnaliseCurricularScreen extends StatefulWidget {
   final int userId;
@@ -28,66 +30,22 @@ class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
     final disciplinasPendentes = provider.disciplinasPendentes;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Análise Curricular'),
-        backgroundColor: Colors.blue[700],
-      ),
+      appBar: const AnaliseAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Progresso do Curso',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            LinearProgressIndicator(
-              value: progresso / 100,
-              backgroundColor: Colors.grey[300],
-              color: Colors.blue[700],
-              minHeight: 10,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Progresso: ${progresso.toStringAsFixed(1)}%',
-              style: const TextStyle(fontSize: 16),
+            ProgressoCard(progresso: progresso),
+            const SizedBox(height: 16),
+            DisciplinasList(
+              titulo: 'Disciplinas Concluídas',
+              disciplinas: disciplinasConcluidas,
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Disciplinas Concluídas',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: ListView.builder(
-                itemCount: disciplinasConcluidas.length,
-                itemBuilder: (context, index) {
-                  final disciplina = disciplinasConcluidas[index];
-                  return ListTile(
-                    title: Text(disciplina.disciplina),
-                    subtitle: Text('Carga Horária: ${disciplina.cargaHoraria}h'),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Disciplinas Pendentes',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: ListView.builder(
-                itemCount: disciplinasPendentes.length,
-                itemBuilder: (context, index) {
-                  final disciplina = disciplinasPendentes[index];
-                  return ListTile(
-                    title: Text(disciplina.disciplina),
-                    subtitle: Text('Carga Horária: ${disciplina.cargaHoraria}h'),
-                  );
-                },
-              ),
+            DisciplinasList(
+              titulo: 'Disciplinas Pendentes',
+              disciplinas: disciplinasPendentes,
             ),
           ],
         ),

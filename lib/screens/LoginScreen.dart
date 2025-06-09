@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../provider/BoletimProvider.dart';
 import '../services/AuthService.dart';
 import 'DashboardScreen.dart';
+import '../widgets/EmailField.dart';
+import '../widgets/PasswordField.dart';
+import '../widgets/LoginButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -57,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -86,44 +86,18 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 32),
 
-              // E-mail
-              TextField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'E-mail',
-                  prefixIcon: Icon(Icons.email),
-                  border: OutlineInputBorder(),
-                ),
-              ),
+              // Campo de email
+              EmailField(controller: _emailController),
               const SizedBox(height: 16),
 
-              // Senha
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Senha',
-                  prefixIcon: Icon(Icons.lock),
-                  border: OutlineInputBorder(),
-                ),
-              ),
+              // Campo de senha
+              PasswordField(controller: _passwordController),
               const SizedBox(height: 24),
 
-              // Botão ou loading
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: _isLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : ElevatedButton.icon(
-                  onPressed: _login,
-                  icon: const Icon(Icons.login),
-                  label: const Text('Entrar'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade700,
-                  ),
-                ),
+              // Botão de login
+              LoginButton(
+                isLoading: _isLoading,
+                onPressed: _login,
               ),
             ],
           ),

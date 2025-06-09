@@ -3,7 +3,7 @@ import 'package:aplicativo_unitins/screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/RematriculaProvider.dart';
-import '../provider/AnaliseCurricularProvider.dart'; // Importe o AnaliseCurricularProvider
+import '../provider/AnaliseCurricularProvider.dart';
 
 void main() {
   runApp(const AppAcademico());
@@ -18,7 +18,7 @@ class AppAcademico extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => BoletimProvider()),
         ChangeNotifierProvider(create: (_) => RematriculaProvider()),
-        ChangeNotifierProvider(create: (_) => AnaliseCurricularProvider()), // Adicione o AnaliseCurricularProvider
+        ChangeNotifierProvider(create: (_) => AnaliseCurricularProvider()),
       ],
       child: MaterialApp(
         title: 'App Acadêmico',

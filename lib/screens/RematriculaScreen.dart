@@ -3,8 +3,11 @@ import 'package:provider/provider.dart';
 import '../models/Disciplina.dart';
 import '../provider/RematriculaProvider.dart';
 import '../services/GradeCurricularService.dart';
+import '../widgets/rematricula/DisciplinasRematriculaList.dart';
+import '../widgets/rematricula/LoadingErrorState.dart';
+import '../widgets/rematricula/RematriculaAppBar.dart';
+import '../widgets/rematricula/SaveButton.dart';
 import 'ComprovanteMatriculaScreen.dart';
-
 
 class RematriculaScreen extends StatefulWidget {
   final int userId;
@@ -18,13 +21,23 @@ class RematriculaScreen extends StatefulWidget {
 class _RematriculaScreenState extends State<RematriculaScreen> {
   final GradeCurricularService _gradeService = GradeCurricularService();
   late Future<List<Disciplina>> _gradeFuture;
-  late int _proximoPeriodo = 2; // Próximo período após o 1º semestre de 2025
+  late int _proximoPeriodo = 2;
   List<Disciplina> _disciplinasSelecionadas = [];
 
   @override
   void initState() {
     super.initState();
     _gradeFuture = _gradeService.fetchGradeCurricular('Sistemas de Informação');
+  }
+
+  void _toggleDisciplina(Disciplina disciplina) {
+    setState(() {
+      if (_disciplinasSelecionadas.contains(disciplina)) {
+        _disciplinasSelecionadas.remove(disciplina);
+      } else {
+        _disciplinasSelecionadas.add(disciplina);
+      }
+    });
   }
 
   void _salvarRematricula() {
@@ -35,7 +48,6 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Rematrícula salva com sucesso!')),
       );
-      // Navegar para o comprovante
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -51,31 +63,29 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final situacaoProvider = Provider.of<RematriculaProvider>(context);
+    if (situacaoProvider.isMatriculado(_proximoPeriodo)) {
+      return ComprovanteMatriculaScreen(userId: widget.userId);
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rematrícula Online'),
-        backgroundColor: Colors.blue[700],
-      ),
+      appBar: const RematriculaAppBar(),
       body: FutureBuilder<List<Disciplina>>(
         future: _gradeFuture,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Erro: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('Nenhuma disciplina encontrada'));
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const LoadingErrorState();
+          }
+          if (snapshot.hasError) {
+            return LoadingErrorState(error: snapshot.error.toString());
+          }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const LoadingErrorState(error: 'Nenhuma disciplina encontrada');
           }
 
           final disciplinas = snapshot.data!
               .where((d) => d.periodo == _proximoPeriodo)
               .toList();
-
-          // Simulação: Se já há matrícula ativa para o próximo período, exibe o comprovante
-          final situacaoProvider = Provider.of<RematriculaProvider>(context);
-          if (situacaoProvider.isMatriculado(_proximoPeriodo)) {
-            return ComprovanteMatriculaScreen(userId: widget.userId);
-          }
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -86,42 +96,14 @@ class _RematriculaScreenState extends State<RematriculaScreen> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: disciplinas.length,
-                    itemBuilder: (context, index) {
-                      final disciplina = disciplinas[index];
-                      final isSelected = _disciplinasSelecionadas.contains(disciplina);
-                      return Card(
-                        child: ListTile(
-                          title: Text(disciplina.disciplina),
-                          subtitle: Text('Carga Horária: ${disciplina.cargaHoraria}h'),
-                          trailing: Checkbox(
-                            value: isSelected,
-                            onChanged: (value) {
-                              setState(() {
-                                if (value!) {
-                                  _disciplinasSelecionadas.add(disciplina);
-                                } else {
-                                  _disciplinasSelecionadas.remove(disciplina);
-                                }
-                              });
-                            },
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                DisciplinasRematriculaList(
+                  titulo: 'Selecione as disciplinas para o 2º Semestre de 2025:',
+                  disciplinas: disciplinas,
+                  selecionadas: _disciplinasSelecionadas,
+                  onToggleDisciplina: _toggleDisciplina,
                 ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: _salvarRematricula,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue[600],
-                    foregroundColor: Colors.white,
-                  ),
-                  child: const Text('Salvar Rematrícula'),
-                ),
+                SaveButton(onPressed: _salvarRematricula),
               ],
             ),
           );
