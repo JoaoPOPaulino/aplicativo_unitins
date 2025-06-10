@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../services/AuthService.dart';
-import 'DashboardScreen.dart';
+
 import '../widgets/EmailField.dart';
 import '../widgets/PasswordField.dart';
 import '../widgets/LoginButton.dart';
+import 'DashboardScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

@@ -87,6 +87,22 @@ class DisciplinaCard extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 8),
+            InfoItem(
+              label: 'Período',
+              value: item.periodo.toString(),
+              icon: Icons.calendar_view_month,
+              color: Colors.blueGrey,
+            ),
+            if (item.semestreConclusao != null) ...[
+              const SizedBox(height: 8),
+              InfoItem(
+                label: 'Semestre de Conclusão',
+                value: item.semestreConclusao!,
+                icon: Icons.calendar_today,
+                color: Colors.blueGrey,
+              ),
+            ],
           ],
         ),
       ),

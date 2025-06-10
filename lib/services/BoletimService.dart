@@ -1,37 +1,53 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../models/Boletim.dart';
-
 
 class BoletimService {
   final String baseUrl = 'http://localhost:3000';
 
   Future<List<Boletim>> fetchBoletim(int userId) async {
     try {
-      final response = await http.get(
-        Uri.parse('$baseUrl?userId=$userId'),
+      // Buscar dados do boletim
+      final boletimResponse = await http.get(
+        Uri.parse('$baseUrl/boletim?userId=$userId'),
       ).timeout(const Duration(seconds: 30));
 
-      if (response.statusCode == 200) {
-        // Adicione este print para debug
-        print('Resposta da API: ${response.body}');
+      if (boletimResponse.statusCode == 200) {
+        print('Resposta da API (boletim): ${boletimResponse.body}');
+        final boletimData = jsonDecode(boletimResponse.body) as List<dynamic>;
 
-        final dynamic responseData = jsonDecode(response.body);
+        // Buscar grade curricular para mapear disciplinaId para nome e período
+        final gradeResponse = await http.get(
+          Uri.parse('$baseUrl/grade_curricular'),
+        ).timeout(const Duration(seconds: 30));
 
-        // Verifica se é uma lista direta ou um objeto com propriedade 'boletim'
-        List<dynamic> boletimData = [];
-        if (responseData is List) {
-          boletimData = responseData;
-        } else if (responseData is Map && responseData.containsKey('boletim')) {
-          boletimData = responseData['boletim'];
+        if (gradeResponse.statusCode == 200) {
+          print('Resposta da API (grade_curricular): ${gradeResponse.body}');
+          final gradeData = jsonDecode(gradeResponse.body) as List<dynamic>;
+
+          // Criar mapa de disciplinaId para nome e período da disciplina
+          final disciplinaMap = {
+            for (var item in gradeData)
+              int.parse(item['id'].toString()): {
+                'nome': item['disciplina'].toString(),
+                'periodo': int.parse(item['periodo'].toString()),
+              }
+          };
+
+          // Mapear boletim com nomes e períodos das disciplinas
+          return boletimData.map((json) {
+            final disciplinaId = int.parse(json['disciplinaId']?.toString() ?? '0');
+            final disciplinaInfo = disciplinaMap[disciplinaId] ?? {
+              'nome': 'Disciplina não encontrada',
+              'periodo': 0,
+            };
+            return Boletim.fromJson(json, disciplinaInfo['nome'] as String, disciplinaInfo['periodo'] as int);
+          }).toList();
         } else {
-          throw Exception('Formato de resposta inválido');
+          throw Exception('Erro ao carregar grade curricular: ${gradeResponse.statusCode}');
         }
-
-        return boletimData.map((json) => Boletim.fromJson(json)).toList();
       } else {
-        throw Exception('Erro ao carregar boletim: ${response.statusCode}');
+        throw Exception('Erro ao carregar boletim: ${boletimResponse.statusCode}');
       }
     } catch (e) {
       print('Erro na requisição: $e');

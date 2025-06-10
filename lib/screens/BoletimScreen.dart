@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/Boletim.dart';
 import '../provider/BoletimProvider.dart';
 import '../widgets/boletim/BoletimAppBar.dart';
@@ -9,7 +8,6 @@ import '../widgets/boletim/BoletimErrorState.dart';
 import '../widgets/boletim/BoletimLoadingState.dart';
 import '../widgets/boletim/BoletimSummaryCard.dart';
 import '../widgets/boletim/DisciplinaCard.dart';
-
 
 class BoletimScreen extends StatelessWidget {
   const BoletimScreen({super.key});
@@ -91,7 +89,8 @@ class BoletimScreen extends StatelessWidget {
               itemCount: boletim.length,
               separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemBuilder: (context, index) {
-                return DisciplinaCard(item: boletim[index]);
+                final item = boletim[index];
+                return DisciplinaCard(item: item);
               },
             ),
           ),

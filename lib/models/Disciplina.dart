@@ -17,11 +17,11 @@ class Disciplina {
 
   factory Disciplina.fromJson(Map<String, dynamic> json) {
     return Disciplina(
-      id: int.parse(json['id'].toString()),
+      id: int.parse(json['id']?.toString() ?? '0'),
       curso: json['curso']?.toString() ?? '',
-      periodo: int.parse(json['periodo'].toString()),
+      periodo: int.parse(json['periodo']?.toString() ?? '0'),
       disciplina: json['disciplina']?.toString() ?? '',
-      cargaHoraria: int.parse(json['cargaHoraria'].toString()),
+      cargaHoraria: int.parse(json['cargaHoraria']?.toString() ?? '0'),
       preRequisitos: (json['preRequisitos'] as List<dynamic>?)?.cast<int>(),
     );
   }
