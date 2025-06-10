@@ -15,11 +15,16 @@ class AnaliseCurricularScreen extends StatefulWidget {
 }
 
 class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
+  String? _errorMessage;
+
   @override
   void initState() {
     super.initState();
     final provider = Provider.of<AnaliseCurricularProvider>(context, listen: false);
     provider.fetchAnalise(widget.userId).catchError((e) {
+      setState(() {
+        _errorMessage = 'Erro ao carregar dados: $e';
+      });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao carregar dados: $e')),
       );
@@ -33,6 +38,13 @@ class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
     final disciplinasConcluidas = provider.disciplinasConcluidas;
     final disciplinasPendentes = provider.disciplinasPendentes;
     final periodoAtual = provider.periodoAtual;
+
+    if (_errorMessage != null) {
+      return Scaffold(
+        appBar: const AnaliseAppBar(),
+        body: Center(child: Text(_errorMessage!, style: const TextStyle(color: Colors.red))),
+      );
+    }
 
     return Scaffold(
       appBar: const AnaliseAppBar(),
