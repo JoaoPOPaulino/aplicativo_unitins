@@ -1,77 +1,179 @@
-Aplicativo Acadêmico Unitins
-O Aplicativo Acadêmico Unitins é uma solução desenvolvida em Flutter para gerenciar informações acadêmicas de estudantes, incluindo boletim, grade curricular, rematrícula online, situação acadêmica e análise curricular. Este projeto foi criado para simular um sistema de secretaria acadêmica, integrando dados de um servidor JSON local.
-Funcionalidades
+# 📚 Aplicativo Acadêmico Unitins - AV2 de Prog. para Dispositivos Móveis I
 
-Boletim (Semestre Atual): Visualização das notas e frequências das disciplinas do semestre atual.
-Grade Curricular: Exibição das disciplinas distribuídas por período para um curso específico.
-Rematrícula Online: Processo de rematrícula com emissão de declaração de vínculo.
-Situação Acadêmica: Detalhes sobre status da matrícula, pendências financeiras e acadêmicas.
-Análise Curricular: Progresso do curso com barra de porcentagem e listas de disciplinas concluídas e pendentes.
+Uma solução completa desenvolvida em Flutter para gerenciamento de informações acadêmicas, simulando um sistema real de secretaria universitária.
 
-Pré-requisitos
+## 🎯 Sobre o Projeto
 
-Flutter SDK (versão 3.x ou superior).
-Dart (incluído com o Flutter).
-JSON Server para simular a API.
-Editor de código (ex.: VS Code com extensões Flutter e Dart).
+O Aplicativo Acadêmico Unitins é uma aplicação móvel/web que permite aos estudantes acessar e gerenciar suas informações acadêmicas de forma prática e intuitiva. O sistema integra dados através de um servidor JSON local, oferecendo uma experiência completa de gestão acadêmica.
 
-Instalação
+## ✨ Funcionalidades Principais
 
-Clone o repositório:
+### 📊 **Boletim Acadêmico**
+- Visualização das notas e frequências do semestre atual
+- Acompanhamento do desempenho por disciplina
+- Status de aprovação/reprovação
+
+### 📅 **Grade Curricular**
+- Exibição completa das disciplinas por período
+- Organização por curso específico
+- Informações de carga horária
+
+### 🔄 **Rematrícula Online**
+- Processo digitalizado de rematrícula
+- Emissão automática de declaração de vínculo
+- Interface intuitiva e simplificada
+
+### 📋 **Situação Acadêmica**
+- Status detalhado da matrícula
+- Identificação de pendências financeiras
+- Alertas sobre questões acadêmicas
+
+### 📈 **Análise Curricular**
+- Progresso visual do curso com barra de porcentagem
+- Lista de disciplinas concluídas
+- Disciplinas pendentes organizadas por período
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Flutter** - Framework de desenvolvimento
+- **Dart** - Linguagem de programação
+- **JSON Server** - Simulação de API REST
+- **Provider** - Gerenciamento de estado
+
+## 📋 Pré-requisitos
+
+Antes de começar, certifique-se de ter instalado:
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) (versão 3.x ou superior)
+- [Dart SDK](https://dart.dev/get-dart) (incluído com Flutter)
+- [Node.js](https://nodejs.org/) (para JSON Server)
+- Editor de código ([VS Code](https://code.visualstudio.com/) recomendado com extensões Flutter e Dart)
+
+## 🚀 Instalação e Configuração
+
+### 1. Clone o Repositório
+```bash
 git clone https://github.com/seu-usuario/aplicativo-unitins.git
 cd aplicativo-unitins
+```
 
-
-Instale as dependências:
+### 2. Instale as Dependências
+```bash
 flutter pub get
+```
 
+### 3. Configure o JSON Server
+```bash
+# Instale o JSON Server globalmente
+npm install -g json-server
 
-Configure o JSON Server:
+# Certifique-se de que o arquivo db.json está na raiz do projeto
+# Inicie o servidor JSON
+json-server --watch db.json --port 3000
+```
 
-Certifique-se de ter o Node.js instalado.
-Instale o JSON Server globalmente: npm install -g json-server
+> ⚠️ **Importante:** Verifique se a `baseUrl` nos serviços está configurada corretamente (padrão: `localhost:3000`)
 
-
-Coloque o arquivo db.json (fornecido no repositório) na raiz do projeto.
-Inicie o servidor JSON: json-server --watch db.json
-
-
-Sempre verifique a baseUrl nos serviços (padrão localhost:3000).
-
-
-Execute o aplicativo:
+### 4. Execute a Aplicação
+```bash
+# Para executar no navegador
 flutter run -d chrome --debug
 
+# Para executar em emulador/dispositivo móvel
+flutter run
+```
 
-Ou use um emulador/device Android/iOS.
+## 📁 Estrutura do Projeto
 
+```
+lib/
+├── models/           # Modelos de dados
+│   ├── disciplina.dart
+│   ├── boletim.dart
+│   └── ...
+├── providers/        # Gerenciamento de estado
+│   ├── boletim_provider.dart
+│   ├── analise_curricular_provider.dart
+│   └── ...
+├── screens/          # Telas da aplicação
+│   ├── dashboard_screen.dart
+│   ├── analise_curricular_screen.dart
+│   └── ...
+└── services/         # Serviços de API
+    ├── analise_curricular_service.dart
+    └── ...
+```
 
+## 🗃️ Base de Dados (db.json)
 
-Estrutura do Projeto
+O arquivo `db.json` simula uma API REST completa com as seguintes seções:
 
-lib/models/: Modelos de dados (ex.: Disciplina, Boletim).
-lib/provider/: Providers para gerenciamento de estado (ex.: BoletimProvider, AnaliseCurricularProvider).
-lib/screens/: Telas do aplicativo (ex.: DashboardScreen, AnaliseCurricularScreen).
-lib/services/: Serviços para chamadas à API (ex.: AnaliseCurricularService).
+### 📚 **Seções Principais**
+- **`boletim`** - Registros de notas, frequências e status por usuário
+- **`users`** - Dados de autenticação (10 usuários de teste)
+- **`grade_curricular`** - 98 disciplinas distribuídas entre os cursos
+- **`situacao`** - Status acadêmico e pendências de cada usuário
 
-Sobre o db.json
-O arquivo db.json é a base de dados local que simula a API do sistema. Ele contém as seguintes seções:
+### 🎓 **Cursos Disponíveis**
+- Sistemas de Informação
+- Ciência da Computação
 
-boletim: Registros de notas, frequências e status de disciplinas por usuário.
-users: Informações de login (nome, e-mail, senha) para 10 usuários.
-grade_curricular: Lista de disciplinas com IDs, cursos ("Sistemas de Informação" e "Ciência da Computação"), períodos e cargas horárias (98 disciplinas no total).
-situacao: Status acadêmico de cada usuário, incluindo matrícula, pendências (documentos, financeiras, acadêmicas) e última atualização.
+## 👥 Usuários de Teste
 
-Exemplo de uso:
+Para testar a aplicação, utilize os seguintes usuários:
 
-Faça login com userId: 3 (e-mail: a, senha: a) para ver o progresso de João Pedro em "Sistemas de Informação".
-Use userId: 4 (e-mail: maria@unitins.br, senha: m123) para verificar Maria Silva em "Ciência da Computação".
+| Usuário | E-mail | Senha | Curso | Descrição |
+|---------|--------|--------|--------|-----------|
+| João Pedro | `a` | `a` | Sistemas de Informação | Usuário com progresso avançado |
+| Maria Silva | `maria@unitins.br` | `m123` | Ciência da Computação | Usuário com algumas pendências |
 
-O arquivo deve ser atualizado conforme necessário para adicionar mais usuários ou disciplinas.
-Contribuição
+> 💡 **Dica:** Use `userId: 3` para João Pedro e `userId: 4` para Maria Silva
 
-Faça um fork do repositório.
-Crie uma branch para sua feature: git checkout -b feature/nova-funcionalidade.
-Commit suas mudanças: git commit -m "Descrição da mudança".
-Envie para o repositório: git push origin feature/nova-funcionalidade.
-Abra um Pull Request.
+## 🔧 Desenvolvimento
+
+### Adicionando Novos Usuários
+1. Edite o arquivo `db.json`
+2. Adicione novos registros nas seções `users`, `boletim` e `situacao`
+3. Reinicie o JSON Server
+
+### Adicionando Disciplinas
+1. Localize a seção `grade_curricular` no `db.json`
+2. Adicione novas disciplinas seguindo o padrão existente
+3. Atualize os registros de `boletim` conforme necessário
+
+## 🤝 Como Contribuir
+
+Contribuições são sempre bem-vindas! Siga estes passos:
+
+1. **Fork** o repositório
+2. **Clone** seu fork localmente
+3. **Crie** uma branch para sua feature:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+   ```
+4. **Commit** suas mudanças:
+   ```bash
+   git commit -m "feat: adiciona nova funcionalidade"
+   ```
+5. **Push** para seu repositório:
+   ```bash
+   git push origin feature/nova-funcionalidade
+   ```
+6. **Abra** um Pull Request
+
+### 📝 Padrões de Commit
+- `feat:` - Nova funcionalidade
+- `fix:` - Correção de bug
+- `docs:` - Documentação
+- `style:` - Formatação de código
+- `refactor:` - Refatoração
+- `test:` - Testes
+
+## 📞 Suporte
+
+Se encontrar algum problema ou tiver dúvidas:
+
+1. Verifique se o JSON Server está rodando
+2. Confirme se todas as dependências foram instaladas
+3. Verifique a configuração da `baseUrl`
+4. Abra uma [issue](https://github.com/seu-usuario/aplicativo-unitins/issues) no repositório
