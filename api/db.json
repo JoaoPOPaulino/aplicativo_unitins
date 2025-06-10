@@ -224,8 +224,8 @@
       "disciplinaId": 3,
       "nota": 6.5,
       "frequencia": "80%",
-      "status": "Aprovado",
-      "semestreConclusao": "2023.1"
+      "status": "Reprovado",
+      "semestreConclusao": null
     },
     {
       "id": 4,
