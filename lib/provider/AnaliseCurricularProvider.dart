@@ -67,9 +67,24 @@ class AnaliseCurricularProvider with ChangeNotifier {
       _disciplinasPendentes = pendentes;
 
       // Calcular progresso com base na carga horária
-      final totalCargaHoraria = (_disciplinasConcluidas + _disciplinasPendentes).fold(0, (sum, d) => sum + d.cargaHoraria);
+      // Buscar dados do usuário
+      final userResponse = await http.get(Uri.parse('http://localhost:3000/users/$userId')).timeout(const Duration(seconds: 30));
+      if (userResponse.statusCode != 200) throw Exception('Erro ao buscar usuário');
+      final userData = jsonDecode(userResponse.body);
+      final cursoNome = userData['curso'];
+
+// Buscar carga horária total do curso
+      final cursoResponse = await http.get(Uri.parse('http://localhost:3000/cursos?nome=$cursoNome')).timeout(const Duration(seconds: 30));
+      if (cursoResponse.statusCode != 200) throw Exception('Erro ao buscar curso');
+      final cursoData = jsonDecode(cursoResponse.body) as List;
+      final cargaHorariaTotalCurso = cursoData.isNotEmpty ? cursoData.first['cargaHorariaTotal'] as int : 0;
+
+// Calcular progresso com base na carga horária real do curso
       final cargaHorariaConcluida = _disciplinasConcluidas.fold(0, (sum, d) => sum + d.cargaHoraria);
-      _progresso = totalCargaHoraria > 0 ? (cargaHorariaConcluida / totalCargaHoraria) * 100 : 0.0;
+      _progresso = cargaHorariaTotalCurso > 0
+          ? (cargaHorariaConcluida / cargaHorariaTotalCurso)
+          : 0.0;
+
 
       // Buscar período atual
       final situacaoResponse = await http.get(Uri.parse('http://localhost:3000/situacao?userId=$userId')).timeout(const Duration(seconds: 30));
