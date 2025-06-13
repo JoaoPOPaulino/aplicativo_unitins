@@ -6,7 +6,7 @@ class DisciplinasRematriculaList extends StatelessWidget {
   final String titulo;
   final List<Disciplina> disciplinas;
   final List<Disciplina> selecionadas;
-  final ValueChanged<Disciplina> onToggleDisciplina;
+  final Function(Disciplina) onToggleDisciplina;
 
   const DisciplinasRematriculaList({
     super.key,
@@ -19,20 +19,37 @@ class DisciplinasRematriculaList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          titulo,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        ...disciplinas.map((disciplina) => DisciplinaCheckboxCard(
-          disciplina: disciplina,
-          isSelected: selecionadas.contains(disciplina),
-          onChanged: (_) => onToggleDisciplina(disciplina),
-        )),
-        const Divider(),
-      ],
+      children: disciplinas.map((disciplina) {
+        final selecionada = selecionadas.contains(disciplina);
+
+        return Card(
+          color: selecionada ? Colors.green[50] : Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(
+              color: selecionada ? Colors.green : Colors.grey.shade300,
+              width: 1,
+            ),
+          ),
+          elevation: 2,
+          margin: const EdgeInsets.symmetric(vertical: 6),
+          child: ListTile(
+            leading: Icon(
+              selecionada ? Icons.check_circle : Icons.circle_outlined,
+              color: selecionada ? Colors.green : Colors.grey,
+            ),
+            title: Text(
+              disciplina.disciplina,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
+            subtitle: Text(
+              'Período: ${disciplina.periodo} | Carga Horária: ${disciplina.cargaHoraria}h',
+              style: const TextStyle(fontSize: 13),
+            ),
+            onTap: () => onToggleDisciplina(disciplina),
+          ),
+        );
+      }).toList(),
     );
   }
 }

@@ -55,20 +55,75 @@ class _AnaliseCurricularScreenState extends State<AnaliseCurricularScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Período Atual: ${periodoAtual != null ? "$periodoAtualº período" : "Não disponível"}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            // Período Atual em destaque
+            Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    const Icon(Icons.calendar_today, color: Colors.blue),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        'Período Atual: ${periodoAtual != null ? "$periodoAtualº período" : "Não disponível"}',
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
+
             const SizedBox(height: 16),
-            ProgressoCard(progresso: progresso),
-            const SizedBox(height: 16),
-            DisciplinasList(
-              titulo: 'Disciplinas Concluídas',
+
+            // Progresso com mais visual
+            Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Progresso do Curso",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    const SizedBox(height: 10),
+                    LinearProgressIndicator(
+                      value: progresso,
+                      backgroundColor: Colors.grey[300],
+                      color: Colors.blue[700],
+                      minHeight: 10,
+                    ),
+                    const SizedBox(height: 6),
+                    Text("${(progresso * 100).toStringAsFixed(1)}% concluído"),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Disciplinas Concluídas
+            Text('✅ Disciplinas Concluídas',
+                style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 8),
+            disciplinasConcluidas.isEmpty
+                ? const Text("Nenhuma disciplina encontrada.")
+                : DisciplinasList(
+              titulo: '',
               disciplinas: disciplinasConcluidas,
             ),
-            const SizedBox(height: 16),
+
+            const SizedBox(height: 24),
+
+            // Disciplinas Pendentes
+            Text('📚 Disciplinas Pendentes',
+                style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 8),
             DisciplinasList(
-              titulo: 'Disciplinas Pendentes',
+              titulo: '',
               disciplinas: disciplinasPendentes,
             ),
           ],

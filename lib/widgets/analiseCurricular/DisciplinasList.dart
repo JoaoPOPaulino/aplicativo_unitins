@@ -18,11 +18,14 @@ class DisciplinasList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          titulo,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
+        if (titulo.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+              titulo,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
         disciplinas.isEmpty
             ? const Text('Nenhuma disciplina encontrada.')
             : ListView.builder(
@@ -31,6 +34,7 @@ class DisciplinasList extends StatelessWidget {
           itemCount: disciplinas.length,
           itemBuilder: (context, index) {
             final disciplina = disciplinas[index];
+
             final boletimItem = boletim.firstWhere(
                   (b) => b.disciplinaId == disciplina.id,
               orElse: () => Boletim(
@@ -38,7 +42,7 @@ class DisciplinasList extends StatelessWidget {
                 userId: 0,
                 disciplinaId: disciplina.id,
                 disciplina: disciplina.disciplina,
-                periodo: disciplina.periodo, // Adicionado
+                periodo: disciplina.periodo,
                 nota: 0,
                 frequencia: '0%',
                 status: 'Pendente',
@@ -46,14 +50,35 @@ class DisciplinasList extends StatelessWidget {
               ),
             );
 
+            final isConcluida = boletimItem.status != 'Pendente';
+            final cardColor = isConcluida
+                ? Colors.green[50]
+                : Colors.orange[50];
+            final icon = isConcluida
+                ? const Icon(Icons.check_circle, color: Colors.green)
+                : const Icon(Icons.schedule, color: Colors.orange);
+
             return Card(
+              color: cardColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              elevation: 2,
+              margin: const EdgeInsets.symmetric(vertical: 6),
               child: ListTile(
-                title: Text(disciplina.disciplina),
+                leading: icon,
+                title: Text(
+                  disciplina.disciplina,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Período: ${disciplina.periodo} | Carga Horária: ${disciplina.cargaHoraria}h'),
-                    if (boletimItem.status != 'Pendente') ...[
+                    Text(
+                      'Período: ${disciplina.periodo} | Carga Horária: ${disciplina.cargaHoraria}h',
+                    ),
+                    if (isConcluida) ...[
+                      const SizedBox(height: 4),
                       Text('Nota: ${boletimItem.nota.toStringAsFixed(1)}'),
                       Text('Frequência: ${boletimItem.frequencia}'),
                       Text('Status: ${boletimItem.status}'),
