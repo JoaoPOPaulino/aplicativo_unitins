@@ -202,7 +202,7 @@
   "boletim": [
     {
       "id": 1,
-      "userId": 3,
+      "userId": 1,
       "disciplinaId": 1,
       "nota": 8.5,
       "frequencia": "90%",
@@ -211,7 +211,7 @@
     },
     {
       "id": 2,
-      "userId": 3,
+      "userId": 1,
       "disciplinaId": 2,
       "nota": 7.0,
       "frequencia": "85%",
@@ -220,7 +220,7 @@
     },
     {
       "id": 3,
-      "userId": 3,
+      "userId": 1,
       "disciplinaId": 3,
       "nota": 6.5,
       "frequencia": "80%",
@@ -229,7 +229,7 @@
     },
     {
       "id": 4,
-      "userId": 4,
+      "userId": 1,
       "disciplinaId": 68,
       "nota": 9.0,
       "frequencia": "95%",
@@ -238,7 +238,7 @@
     },
     {
       "id": 5,
-      "userId": 4,
+      "userId": 1,
       "disciplinaId": 69,
       "nota": 8.0,
       "frequencia": "88%",
