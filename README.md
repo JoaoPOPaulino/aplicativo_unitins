@@ -177,3 +177,7 @@ Se encontrar algum problema ou tiver dúvidas:
 2. Confirme se todas as dependências foram instaladas
 3. Verifique a configuração da `baseUrl`
 4. Abra uma [issue](https://github.com/seu-usuario/aplicativo-unitins/issues) no repositório
+
+---
+
+Alunos: João Pedro de Oliveira e João Victor.
